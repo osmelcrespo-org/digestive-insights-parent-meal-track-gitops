@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
-  namespace: myapp
+  name: meal-track
+  namespace: digestive-insights
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: myapp
+      app: meal-track
   template:
     metadata:
       labels:
-        app: myapp
+        app: meal-track
     spec:
       containers:
-        - name: myapp
-          image: nexus.example.com/myapp:latest
+        - name: meal-track
+          image: nexus.ocrespo.com/docker/crm-accounts:1.1.0-20250322.221359
           ports:
             - containerPort: 8080
           envFrom:
             - configMapRef:
-                name: myapp-config
+                name: meal-track-config
